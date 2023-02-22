@@ -48,6 +48,10 @@ spec:
     metadata:
       labels:
         app: web
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
       - name: web
@@ -74,4 +78,6 @@ spec:
   ports:
     - port: 80
       targetPort: 8080
-  type: LoadBalancer  
+      # nodePort: 30000
+  type: LoadBalancer
+  # type: NodePort
